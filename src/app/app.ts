@@ -17,8 +17,13 @@ export class App {
   products: Product[] = [];
 
   columns = [
-    { field: 'name', header: 'Name', sortable: true, filterable: true },
-    { field: 'category', header: 'Category', sortable: true, filterable: true },
+    { field: 'name', header: 'Name', sortable: false, filterable: true },
+    {
+      field: 'category',
+      header: 'Category',
+      sortable: false,
+      filterable: true,
+    },
     { field: 'price', header: 'Price', sortable: true, filterable: false },
     { field: 'stock', header: 'In Stock', sortable: true, filterable: false },
   ];

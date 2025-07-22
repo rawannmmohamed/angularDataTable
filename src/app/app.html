@@ -1,9 +1,17 @@
 <p-toast></p-toast>
-
+<ng-template #myCustomTemplate let-row let-columns="columns">
+  @for (col of columns; track $index) {
+  <td class="custom-cell">
+    {{ row[col.field] }}
+  </td>
+  }
+</ng-template>
 <app-data-table
   [data]="products"
   [columns]="columns"
   (create)="handleCreate($event)"
   (update)="handleUpdate($event)"
-  (delete)="handleDelete($event)">
+  (delete)="handleDelete($event)"
+  [customBodyTemplate]="myCustomTemplate"
+>
 </app-data-table>

@@ -1,16 +1,28 @@
 import { Component, input, output, TemplateRef } from '@angular/core';
 import { Product } from '../../models/product';
-import { TableModule } from 'primeng/table';
+import { Table, TableModule } from 'primeng/table';
 import { Column } from '../../models/column';
 import { NgTemplateOutlet } from '@angular/common';
-
+import { ButtonModule } from 'primeng/button';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
 @Component({
   selector: 'app-data-table',
-  imports: [TableModule,NgTemplateOutlet],
+  imports: [
+    TableModule,
+    NgTemplateOutlet,
+    ButtonModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule
+  ],
   templateUrl: './data-table.html',
   styleUrl: './data-table.css',
 })
 export class DataTable {
+  searchValue = '';
+
   readonly data = input<Product[]>([]);
   readonly columns = input<Column[]>([]);
   readonly customBodyTemplate = input<TemplateRef<any> | null>(null);
@@ -19,4 +31,8 @@ export class DataTable {
   readonly update = output<Product>();
   readonly delete = output<number>();
 
+  clear(table: Table) {
+    table.clear();
+    this.searchValue = '';
+  }
 }

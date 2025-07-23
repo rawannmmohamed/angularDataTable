@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-data-table',
   imports: [
@@ -15,7 +16,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     IconFieldModule,
     InputIconModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule
   ],
   templateUrl: './data-table.html',
   styleUrl: './data-table.css',
@@ -36,7 +38,7 @@ export class DataTable {
     this.searchValue = '';
   }
   handleGlobalFilter(event: Event, table: Table) {
-  const input = event.target as HTMLInputElement;
-  table.filterGlobal(input.value, 'contains');
-}
+    const input = event.target as HTMLInputElement;
+    table.filterGlobal(input.value, 'contains');
+  }
 }

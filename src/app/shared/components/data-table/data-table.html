@@ -20,6 +20,7 @@
           <input
             pInputText
             type="text"
+             [(ngModel)]="searchValue" 
             (input)="handleGlobalFilter($event, dt)"
             placeholder="Search keyword"
           />

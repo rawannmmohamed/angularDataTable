@@ -20,7 +20,7 @@
           <input
             pInputText
             type="text"
-            (input)="dt.filterGlobal($event.target, 'contains')"
+            (input)="handleGlobalFilter($event, dt)"
             placeholder="Search keyword"
           />
         </p-iconfield>

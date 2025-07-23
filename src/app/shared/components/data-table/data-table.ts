@@ -35,4 +35,8 @@ export class DataTable {
     table.clear();
     this.searchValue = '';
   }
+  handleGlobalFilter(event: Event, table: Table) {
+  const input = event.target as HTMLInputElement;
+  table.filterGlobal(input.value, 'contains');
+}
 }

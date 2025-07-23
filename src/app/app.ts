@@ -17,15 +17,14 @@ export class App {
   products: Product[] = [];
 
   columns = [
-    { field: 'name', header: 'Name', sortable: false, filterable: true },
+    { field: 'name', header: 'Name', sortable: false },
     {
       field: 'category',
       header: 'Category',
       sortable: false,
-      filterable: true,
     },
-    { field: 'price', header: 'Price', sortable: true, filterable: false },
-    { field: 'stock', header: 'In Stock', sortable: true, filterable: false },
+    { field: 'price', header: 'Price', sortable: true },
+    { field: 'stock', header: 'In Stock', sortable: true },
   ];
 
   showError(msg: string) {

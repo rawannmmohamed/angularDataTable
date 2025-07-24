@@ -1,59 +1,61 @@
-# AngularTask
+# Angular Task - Reusable DataTable with CRUD 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+This project is a reusable, dynamic DataTable component built with **Angular 20**, **PrimeNG**, and **Formly**, supporting full **CRUD operations**, **in-place editing**, **dialog form creation**, and **loading states**. The data is managed using a mock REST API powered by **JSON Server**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📁 Project Structure
+
+- `AppComponent` handles:
+  - Product list
+  - Data operations (fetch, create, update, delete)
+  - Success/error toasts
+
+- `DataTableComponent` (reusable)
+  - Accepts dynamic columns and data
+  - Supports inline editing
+  - Allows custom templates
+  - Uses Formly forms in dialogs
+
+---
+
+## ⚙️ Technologies Used
+
+- Angular 20
+- PrimeNG 20
+- JSON Server
+- Formly + Formly PrimeNG
+- Tailwind CSS (optional styling)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/rawannmmohamed/angularTask.git
+cd angularTask
+```
+
+## 2. Install Dependencies
+
+```bash
+npm install 
+```
+
+## 3. Setup Mock API with JSON Server
+
+This project uses [JSON Server](https://github.com/typicode/json-server) to simulate a RESTful backend for product data.
+
+
+## 4. Run the Application
+   Step 1: Start the mock API (JSON Server)
+  ```bash
+npm run start:api
+```
+   Step 2: Start the Angular development server
+  In a new terminal, run:
 
 ```bash
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

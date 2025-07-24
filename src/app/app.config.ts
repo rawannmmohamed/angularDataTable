@@ -9,6 +9,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { provideHttpClient } from '@angular/common/http';
+import { provideFormlyCore } from '@ngx-formly/core'
+import { withFormlyPrimeNG } from '@ngx-formly/Primeng';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(),
+    provideFormlyCore(withFormlyPrimeNG()),
     providePrimeNG({
       theme: {
         preset: Aura,

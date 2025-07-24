@@ -58,7 +58,8 @@ export class App {
     });
   }
 
-  handleCreate(product: Product) {
+  handleCreate(data: any) {
+    const product = data as Product;
     this.productService.createProduct(product).subscribe({
       next: (createdProduct) => {
         this.products = [...this.products, createdProduct];
@@ -83,9 +84,7 @@ export class App {
   handleDelete(id: number) {
     this.productService.deleteProduct(id).subscribe({
       next: () => {
-        this.products.filter((p) => {
-          p.id !== id;
-        });
+        this.products = this.products.filter((p) => p.id !== id.toString());
         this.showSuccess('Product deleted');
       },
       error: () => this.showError('Failed to delete product'),

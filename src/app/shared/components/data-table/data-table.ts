@@ -8,6 +8,10 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { FormGroup } from '@angular/forms';
+import { FormlyFieldConfig, FormlyForm } from '@ngx-formly/core';
+import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-data-table',
   imports: [
@@ -17,13 +21,20 @@ import { FormsModule } from '@angular/forms';
     IconFieldModule,
     InputIconModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    FormlyForm,
+    ReactiveFormsModule,
   ],
   templateUrl: './data-table.html',
   styleUrl: './data-table.css',
 })
 export class DataTable {
-  searchValue = '';
+  visible: boolean = false;
+  searchValue: string = '';
+  form = new FormGroup({});
+  model: any = {};
+  fields: FormlyFieldConfig[] = [];
 
   readonly data = input<Product[]>([]);
   readonly columns = input<Column[]>([]);
@@ -33,6 +44,22 @@ export class DataTable {
   readonly update = output<Product>();
   readonly delete = output<number>();
 
+  ngOnInit(): void {
+    this.fields = this.columns().map((col) => ({
+      key: col.field,
+      type: 'input',
+      templateOptions: {
+        label: col.header,
+        required: true,
+      },
+      validation: {
+        messages: {
+          required: () => `${col.header} is required`,
+        },
+      },
+    }));
+  }
+
   clear(table: Table) {
     table.clear();
     this.searchValue = '';
@@ -40,5 +67,17 @@ export class DataTable {
   handleGlobalFilter(event: Event, table: Table) {
     const input = event.target as HTMLInputElement;
     table.filterGlobal(input.value, 'contains');
+  }
+  showDialog(): boolean {
+    return (this.visible = true);
+  }
+  onSubmit() {
+    if (this.form.valid) {
+      this.create.emit(this.model);
+      console.log(this.model);
+      this.visible = false;
+      this.model = {};
+      this.form.reset();
+    }
   }
 }

@@ -27,7 +27,7 @@ This project is a reusable, dynamic DataTable component built with **Angular 20*
 - PrimeNG 20
 - JSON Server
 - Formly + Formly PrimeNG
-- Tailwind CSS (optional styling)
+
 
 ---
 

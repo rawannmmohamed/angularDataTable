@@ -16,6 +16,8 @@ This project is a reusable, dynamic DataTable component built with **Angular 20*
   - Supports inline editing
   - Allows custom templates
   - Uses Formly forms in dialogs
+  - Global search
+  - Sorting
 
 ---
 

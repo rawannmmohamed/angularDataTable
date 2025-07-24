@@ -4,9 +4,10 @@ import { Product } from './shared/models/product';
 import { Products } from './core/services/products';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 @Component({
   selector: 'app-root',
-  imports: [DataTable, ToastModule],
+  imports: [DataTable, ToastModule,ProgressSpinnerModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
   providers: [MessageService],
@@ -15,6 +16,7 @@ export class App {
   protected readonly title = signal('angularTask');
 
   products: Product[] = [];
+  isLoading = false;
 
   columns = [
     { field: 'name', header: 'Name', sortable: false },
@@ -52,9 +54,16 @@ export class App {
   }
 
   loadProducts() {
+    this.isLoading = true;
     this.productService.getAllProducts().subscribe({
-      next: (data) => (this.products = data),
-      error: () => this.showError('Failed to load products'),
+      next: (data) => {
+        this.products = data;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.showError('Failed to load products');
+        this.isLoading = false;
+      },
     });
   }
 

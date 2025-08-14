@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from '../../../environments/environment.prod';
+
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class Products {
-  private apiUrl = 'http://localhost:3000/products';
+  private apiUrl = `${environment.apiUrl}products`;
 
   private http = inject(HttpClient);
 

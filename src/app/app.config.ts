@@ -10,7 +10,7 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { provideHttpClient } from '@angular/common/http';
 import { provideFormlyCore } from '@ngx-formly/core'
-import { withFormlyPrimeNG } from '@ngx-formly/Primeng';
+import { withFormlyPrimeNG } from '@ngx-formly/primeng';
 
 export const appConfig: ApplicationConfig = {
   providers: [
